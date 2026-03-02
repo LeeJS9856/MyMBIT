@@ -7,11 +7,11 @@ export const COLORS = {
     grey: '#f0f0f0',
   },
   brand: {
-    primary: '#3364A0', // 메인 노란색
+    primary: '#3364A0',
     secondary: '#163162',
   },
   text: {
     main: '#333333',
-    yellow: '#ffff00', // 요청하신 쌩노란색
+    grey: '#383838', // 요청하신 쌩노란색
   },
 } as const; // 값을 읽기 전용으로 고정
