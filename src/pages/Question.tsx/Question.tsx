@@ -3,59 +3,63 @@ import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 import PageLayout from '@/components/layout/PageLayout';
 import { COLORS } from '@/constants/colors';
-import { QUESTIONS } from '@/constants/questions';
+import { QUESTIONS, type JobType, PRIORITY } from '@/constants/questions';
 
 const Question = () => {
   const navigate = useNavigate();
-  
-  // 현재 질문의 인덱스 (0부터 시작)
   const [currentIndex, setCurrentIndex] = useState(0);
-  // 사용자의 선택 결과 저장
-  const [answers, setAnswers] = useState<string[]>([]);
+  
+  // 모든 직무의 초기 점수를 0으로 설정
+  const [totalScores, setTotalScores] = useState<Record<JobType, number>>({
+    백엔드: 0, 프론트: 0, 게임: 0, AI: 0, 디자이너: 0, PM: 0
+  });
 
-  // 현재 보여줄 질문 데이터
   const currentQuestion = QUESTIONS[currentIndex];
 
-  const handleAnswer = (value: string) => {
-    // 1. 답변 저장
-    const newAnswers = [...answers, value];
-    setAnswers(newAnswers);
+  const handleAnswer = (choice: 'yes' | 'no') => {
+    // 1. 점수 계산
+    const questionScores = currentQuestion.scores[choice];
+    const newScores = { ...totalScores };
 
-    // 2. 다음 질문으로 넘어가거나 결과창으로 이동
+    Object.entries(questionScores).forEach(([job, score]) => {
+      newScores[job as JobType] += score;
+    });
+
+    setTotalScores(newScores);
+
+    // 2. 페이지 이동 로직
     if (currentIndex < QUESTIONS.length - 1) {
       setCurrentIndex(currentIndex + 1);
     } else {
-      // 모든 질문이 끝났을 때 결과 페이지로 이동 (데이터를 가지고 이동 가능)
-      console.log("최종 답변 모음:", newAnswers);
-      navigate('/result', { state: { answers: newAnswers } });
+      // 3. 결과 도출 (최고점 및 우선순위 반영)
+      const finalResult = calculateResult(newScores);
+      navigate('/result', { state: { result: finalResult } });
     }
+  };
+
+  const calculateResult = (scores: Record<JobType, number>): JobType => {
+    // 최고 점수 찾기
+    const maxScore = Math.max(...Object.values(scores));
+    // 최고 점수를 가진 직무들 추출
+    const winners = Object.keys(scores).filter(
+      (job) => scores[job as JobType] === maxScore
+    ) as JobType[];
+
+    // 동점자 처리: PRIORITY 순서에서 가장 먼저 나오는 직무 반환
+    return PRIORITY.find((job) => winners.includes(job))!;
   };
 
   const footer = (
     <ButtonGroup>
-      <HalfButton 
-        $bgColor={COLORS.primary} 
-        $textColor={COLORS.white}
-        onClick={() => handleAnswer(currentQuestion.options.yes.value)}
-      >
-        YES
-      </HalfButton>
-
-      <HalfButton 
-        $bgColor={COLORS.white} 
-        $textColor={COLORS.black}
-        onClick={() => handleAnswer(currentQuestion.options.no.value)}
-      >
-        NO
-      </HalfButton>
+      <HalfButton $bgColor={COLORS.primary} $textColor={COLORS.white} onClick={() => handleAnswer('yes')}>YES</HalfButton>
+      <HalfButton $bgColor={COLORS.white} $textColor={COLORS.black} onClick={() => handleAnswer('no')}>NO</HalfButton>
     </ButtonGroup>
   );
 
   return (
     <PageLayout footer={footer}>
       <QuestionWrapper>
-        {/* 질문 번호 표시 (선택사항) */}
-        <StepText>Q{currentQuestion.id}.</StepText>
+        <StepText>{currentIndex + 1} / {QUESTIONS.length}</StepText>
         <QuestionText>
           {currentQuestion.content.split('\n').map((line, i) => (
             <React.Fragment key={i}>{line}<br/></React.Fragment>
@@ -66,46 +70,15 @@ const Question = () => {
   );
 };
 
-// --- 스타일 컴포넌트 ---
-
-const QuestionWrapper = styled.div`
-  text-align: center;
-`;
-
-const StepText = styled.p`
-  color: ${COLORS.primary};
-  font-size: 1.2rem;
-  font-weight: bold;
-  margin-bottom: 10px;
-`;
-
-const QuestionText = styled.h2`
-  font-size: 1.6rem;
-  line-height: 1.5;
-  word-break: keep-all;
-  color: ${COLORS.black};
-`;
-
-const ButtonGroup = styled.div`
-  display: flex;
-  gap: 15px; 
-  width: 100%;
-`;
-
+// 스타일 컴포넌트 생략 (이전과 동일)
+const QuestionWrapper = styled.div` text-align: center; `;
+const StepText = styled.p` color: ${COLORS.primary}; font-weight: bold; margin-bottom: 20px; `;
+const QuestionText = styled.h2` font-size: 1.6rem; line-height: 1.5; word-break: keep-all; `;
+const ButtonGroup = styled.div` display: flex; gap: 15px; width: 100%; `;
 const HalfButton = styled.button<{ $bgColor?: string; $textColor?: string }>`
-  flex: 1;
-  padding: 15px 10px;
-  border-radius: 10px;
-  background-color: ${props => props.$bgColor || '#000000'};
-  color: ${props => props.$textColor || '#ffffff'};
-  border: 1px solid rgba(0, 0, 0, 0.05);
-  font-size: 1.5rem;
-  font-weight: bold;
-  cursor: pointer;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-  transition: all 0.2s;
-
-  &:active { transform: scale(0.95); }
+  flex: 1; padding: 15px; border-radius: 10px; font-size: 1.5rem; font-weight: bold;
+  background-color: ${props => props.$bgColor}; color: ${props => props.$textColor};
+  border: 1px solid rgba(0,0,0,0.05); cursor: pointer;
 `;
 
 export default Question;

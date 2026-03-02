@@ -1,29 +1,63 @@
+export type JobType = '백엔드' | '프론트' | '게임' | 'AI' | '디자이너' | 'PM';
+
 export const QUESTIONS = [
   {
     id: 1,
-    content: "새로운 사람들과 만나는 자리가\n즐거우신가요?",
-    type: "EI", // 외향(E) vs 내향(I)
-    options: {
-      yes: { text: "완전 즐거워!", value: "E" },
-      no: { text: "혼자가 좋아...", value: "I" },
-    },
+    content: "나는 개발하는 것에 흥미를 느낀다.",
+    scores: {
+      yes: { 백엔드: 5, 프론트: 5, 게임: 5, AI: 5 },
+      no: { 디자이너: 5, PM: 5 }
+    }
   },
   {
     id: 2,
-    content: "업무를 할 때 계획을 세우는 것이\n편하신가요?",
-    type: "PJ", // 판단(J) vs 인식(P)
-    options: {
-      yes: { text: "계획은 필수지!", value: "J" },
-      no: { text: "그때그때 달라요.", value: "P" },
-    },
+    content: "나는 문제를 정의하는 것보다\n해결하는 것을 좋아한다.",
+    scores: {
+      yes: { 디자이너: 5, PM: 5 },
+      no: { 백엔드: 5, 프론트: 5, 게임: 5, AI: 5 }
+    }
   },
   {
     id: 3,
-    content: "친구가 우울하다고 할 때\n당신의 반응은?",
-    type: "TF", // 사고(T) vs 감정(F)
-    options: {
-      yes: { text: "왜 우울해? 무슨 일이야?", value: "F" },
-      no: { text: "헐 나도 우울해지려 해..", value: "T" },
-    },
+    content: "나는 사람들과 의견을 조율하는 것에\n자신이 있다.",
+    scores: {
+      yes: { 디자이너: 5, PM: 5 },
+      no: { 백엔드: 5, 프론트: 5, 게임: 5, AI: 5 }
+    }
   },
+  {
+    id: 4,
+    content: "나는 계획, 규칙을 만들고\n설계하는 과정이 즐겁다.",
+    scores: {
+      yes: { PM: 6, 백엔드: 6 },
+      no: {}
+    }
+  },
+  {
+    id: 5,
+    content: "나는 내가 한 일이\n눈에 보이는 게 좋다.",
+    scores: {
+      yes: { 디자이너: 4, 프론트: 4 },
+      no: {}
+    }
+  },
+  {
+    id: 6,
+    content: "나는 게임을 즐겨한다.",
+    scores: {
+      yes: { 게임: 7 },
+      no: {}
+    }
+  },
+  {
+    id: 7,
+    content: "나는 수학에 자신이 있다.",
+    scores: {
+      yes: { AI: 8 },
+      no: {}
+    }
+  }
 ];
+
+// 동점 발생 시 우선순위
+export const PRIORITY: JobType[] = ['백엔드', '프론트', 'AI', 'PM', '게임', '디자이너'];
