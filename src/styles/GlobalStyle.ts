@@ -1,6 +1,7 @@
 import { createGlobalStyle } from 'styled-components';
 import JejuDoldam from '@/assets/fonts/JejuDoldam.ttf';
 import OwnglyphFont from '@/assets/fonts/Ownglyph PDH.ttf';
+import Pretendard from '@/assets/fonts/Pretendard.woff2'
 
 const GlobalStyle = createGlobalStyle`
   @font-face {
@@ -15,6 +16,14 @@ const GlobalStyle = createGlobalStyle`
     font-family: 'Ownglyph';
     src: url(${OwnglyphFont}) format('truetype');
     font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+  }
+
+  @font-face {
+    font-family: 'Pretendard';
+    src: url(${Pretendard}) format('woff2-variations');
+    font-weight: 100 900; 
     font-style: normal;
     font-display: swap;
   }

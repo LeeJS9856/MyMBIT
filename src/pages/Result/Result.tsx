@@ -24,7 +24,7 @@ const Result = () => {
   );
 };
 
-const ImageWrapper = styled.div` width: 100%; display: flex; justify-content: center; margin-top: 20px; `;
-const ResultImage = styled.img` width: 80%; height: auto; `;
+const ImageWrapper = styled.div` width: 100%; display: flex; justify-content: center;`;
+const ResultImage = styled.img` width: 100%; height: auto; `;
 
 export default Result;
