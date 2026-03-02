@@ -7,8 +7,8 @@ export const COLORS = {
     grey: '#f0f0f0',
   },
   brand: {
-    primary: '#ffeb3b', // 메인 노란색
-    secondary: '#fdd835',
+    primary: '#3364A0', // 메인 노란색
+    secondary: '#163162',
   },
   text: {
     main: '#333333',

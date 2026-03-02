@@ -1,6 +1,15 @@
-export type JobType = '백엔드' | '프론트' | '게임' | 'AI' | '디자이너' | 'PM';
+import type { JobType } from './types';
 
-export const QUESTIONS = [
+interface QuestionData {
+  id: number;
+  content: string;
+  scores: {
+    yes: Partial<Record<JobType, number>>; 
+    no: Partial<Record<JobType, number>>;
+  };
+}
+
+export const QUESTIONS: QuestionData[] = [
   {
     id: 1,
     content: "나는 개발하는 것에 흥미를 느낀다.",
@@ -59,5 +68,5 @@ export const QUESTIONS = [
   }
 ];
 
-// 동점 발생 시 우선순위
+// ✅ 우선순위도 types.ts에서 가져온 JobType을 따르도록 설정
 export const PRIORITY: JobType[] = ['백엔드', '프론트', 'AI', 'PM', '게임', '디자이너'];

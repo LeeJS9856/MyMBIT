@@ -43,7 +43,7 @@ const BackgroundLogo = styled.img`
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 100%;
+  width: 95%;
   z-index: 0;
   pointer-events: none;
 `;
@@ -66,12 +66,12 @@ const Body = styled.main`
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 0 20px;
+  padding: 0 30px;
 `;
 
 const Footer = styled.footer`
   z-index: 1;
-  padding: 40px 20px;
+  padding: 40px 30px;
 `;
 
 export default PageLayout;

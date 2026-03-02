@@ -1,36 +1,49 @@
 import { createGlobalStyle } from 'styled-components';
-import JejuDoldam from '@/assets/fonts/JejuDoldam.ttf.ttf';
+import JejuDoldam from '@/assets/fonts/JejuDoldam.ttf.ttf'; // 파일명 오타 확인 필요 (.ttf.ttf)
+import OwnglyphFont from '@/assets/fonts/Ownglyph PDH.ttf';
 
 const GlobalStyle = createGlobalStyle`
   @font-face {
     font-family: 'JejuDoldam';
-    /* 괄호를 빼고 템플릿 리터럴로 정확히 주입 */
     src: url(${JejuDoldam}) format('truetype');
     font-weight: normal;
     font-style: normal;
-    font-display: swap; /* 폰트 로딩 중에도 글자가 보이게 설정 */
+    font-display: swap;
+  }
+
+  @font-face {
+    font-family: 'Ownglyph';
+    src: url(${OwnglyphFont}) format('truetype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
   }
 
   * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    /* !important를 붙여서 다른 스타일이 덮어쓰지 못하게 강제 */
-    font-family: 'JejuDoldam', sans-serif !important;
+    /* !important를 제거해야 개별 컴포넌트에서 Ownglyph로 덮어씌울 수 있습니다. */
+    font-family: 'JejuDoldam', sans-serif;
   }
 
   html, body, #root {
     width: 100%;
     height: 100%;
-    /* 웹 브라우저 전체 배경색 (회색) */
     background-color: #f0f0f0; 
-    font-family: 'JejuDoldam', sans-serif;
   }
 
   body {
     display: flex;
     justify-content: center;
     align-items: center;
+    /* body에 기본 폰트를 지정하면 하위 요소로 상속됩니다. */
+    font-family: 'JejuDoldam', sans-serif;
+  }
+
+  button, input, textarea {
+    /* 버튼이나 입력창은 기본 폰트를 상속받지 않는 경우가 많으므로 별도 지정 */
+    font-family: 'JejuDoldam', sans-serif;
   }
 `;
 

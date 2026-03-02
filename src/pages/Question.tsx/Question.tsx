@@ -3,7 +3,8 @@ import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 import PageLayout from '@/components/layout/PageLayout';
 import { COLORS } from '@/constants/colors';
-import { QUESTIONS, type JobType, PRIORITY } from '@/constants/questions';
+import { QUESTIONS, PRIORITY } from '@/constants/questions';
+import { type JobType } from '@/constants/types';
 
 const Question = () => {
   const navigate = useNavigate();
