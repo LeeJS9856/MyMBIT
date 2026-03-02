@@ -1,5 +1,5 @@
 import { createGlobalStyle } from 'styled-components';
-import JejuDoldam from '@/assets/fonts/JejuDoldam.ttf.ttf'; // 파일명 오타 확인 필요 (.ttf.ttf)
+import JejuDoldam from '@/assets/fonts/JejuDoldam.ttf';
 import OwnglyphFont from '@/assets/fonts/Ownglyph PDH.ttf';
 
 const GlobalStyle = createGlobalStyle`
@@ -23,7 +23,6 @@ const GlobalStyle = createGlobalStyle`
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    /* !important를 제거해야 개별 컴포넌트에서 Ownglyph로 덮어씌울 수 있습니다. */
     font-family: 'JejuDoldam', sans-serif;
   }
 
