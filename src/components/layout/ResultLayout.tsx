@@ -47,7 +47,7 @@ const ResultLayout = ({ jobType, children }: ResultLayoutProps) => {
       <FooterContainer>
         <FooterTitle>에코노베이션이 궁금하다면?</FooterTitle>
         
-        <LinkCard as="a" href="https://www.instagram.com/econovation_official/" target="_blank">
+        <LinkCard as="a" href="https://www.instagram.com/cnu_econovation/" target="_blank">
           <Icon src={InstaIcon} alt="Instagram" />
           <TextGroup>
             <SubLabel>에코노베이션 활동 / 문의</SubLabel>
