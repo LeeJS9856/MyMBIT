@@ -20,7 +20,7 @@ export const QUESTIONS: QuestionData[] = [
   },
   {
     id: 2,
-    content: "나는 문제를 정의하는 것보다\n해결하는 것을 좋아한다.",
+    content: "나는 문제를 정의하는 것보다 해결하는 것을 좋아한다.",
     scores: {
       yes: { 백엔드: 5, 프론트: 5, 게임: 5, AI: 5 },
       no: { 디자이너: 5, PM: 5 },
@@ -28,7 +28,7 @@ export const QUESTIONS: QuestionData[] = [
   },
   {
     id: 3,
-    content: "나는 사람들과 의견을 조율하는 것에\n자신이 있다.",
+    content: "나는 사람들과 의견을 조율하는 것에 자신이 있다.",
     scores: {
       yes: { 디자이너: 5, PM: 5 },
       no: { 백엔드: 5, 프론트: 5, 게임: 5, AI: 5 }
@@ -36,7 +36,7 @@ export const QUESTIONS: QuestionData[] = [
   },
   {
     id: 4,
-    content: "나는 계획, 규칙을 만들고\n설계하는 과정이 즐겁다.",
+    content: "나는 계획, 규칙을 만들고 설계하는 과정이 즐겁다.",
     scores: {
       yes: { PM: 6, 백엔드: 6 },
       no: {}
@@ -44,7 +44,7 @@ export const QUESTIONS: QuestionData[] = [
   },
   {
     id: 5,
-    content: "나는 내가 한 일이\n눈에 보이는 게 좋다.",
+    content: "나는 내가 한 일이 눈에 보이는 게 좋다.",
     scores: {
       yes: { 디자이너: 4, 프론트: 4 },
       no: {}
