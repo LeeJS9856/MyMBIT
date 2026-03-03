@@ -2,9 +2,11 @@ import { createGlobalStyle } from 'styled-components';
 import JejuDoldam from '@/assets/fonts/JejuDoldam.ttf';
 import OwnglyphFont from '@/assets/fonts/Ownglyph PDH.ttf';
 import Pretendard from '@/assets/fonts/Pretendard.woff2'
+import { COLORS } from '@/constants/colors';
 
 const GlobalStyle = createGlobalStyle`
   @font-face {
+    color: ${COLORS.black};
     font-family: 'JejuDoldam';
     src: url(${JejuDoldam}) format('truetype');
     font-weight: normal;
@@ -13,6 +15,7 @@ const GlobalStyle = createGlobalStyle`
   }
 
   @font-face {
+  color: ${COLORS.black};
     font-family: 'Ownglyph';
     src: url(${OwnglyphFont}) format('truetype');
     font-weight: normal;
@@ -21,6 +24,7 @@ const GlobalStyle = createGlobalStyle`
   }
 
   @font-face {
+  color: ${COLORS.black};
     font-family: 'Pretendard';
     src: url(${Pretendard}) format('woff2-variations');
     font-weight: 100 900; 

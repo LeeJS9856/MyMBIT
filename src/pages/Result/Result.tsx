@@ -3,6 +3,11 @@ import { useLocation } from 'react-router-dom';
 import styled, { keyframes } from 'styled-components';
 import ResultLayout from '@/components/layout/ResultLayout';
 import frontImg from '@/assets/front.svg';
+import backImg from '@/assets/back.svg';
+import aiImg from '@/assets/ai.svg';
+import gameImg from '@/assets/game.svg';
+import designerImg from '@/assets/designer.svg';
+import pmImg from '@/assets/pm.svg';
 import LoadingModal from '@/components/common/LoadingModal';
 import type { JobType } from '@/constants/types';
 
@@ -11,8 +16,8 @@ const Result = () => {
   const resultJob = (location.state?.result as JobType) || '백엔드';
   const [showModal, setShowModal] = useState(true);
   const jobImages: Record<JobType, string> = {
-    '프론트': frontImg, '백엔드': frontImg, 'AI': frontImg,
-    '게임': frontImg, 'PM': frontImg, '디자이너': frontImg,
+    '프론트': frontImg, '백엔드': backImg, 'AI': aiImg,
+    '게임': gameImg, 'PM': pmImg, '디자이너': designerImg,
   };
 
   return (
