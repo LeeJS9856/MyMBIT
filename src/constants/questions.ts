@@ -22,8 +22,8 @@ export const QUESTIONS: QuestionData[] = [
     id: 2,
     content: "나는 문제를 정의하는 것보다\n해결하는 것을 좋아한다.",
     scores: {
-      yes: { 디자이너: 5, PM: 5 },
-      no: { 백엔드: 5, 프론트: 5, 게임: 5, AI: 5 }
+      yes: { 백엔드: 5, 프론트: 5, 게임: 5, AI: 5 },
+      no: { 디자이너: 5, PM: 5 },
     }
   },
   {
