@@ -44,7 +44,6 @@ const Main = () => {
         </IntroTextContainer>
 
         {/* 5. 선택된 랜덤 이미지 표시 */}
-        <MainImage src={randomImage} alt="랜덤 아이콘" />
       </ContentWrapper>
     </PageLayout>
   );
