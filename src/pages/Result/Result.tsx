@@ -53,9 +53,10 @@ const BlurContainer = styled.div<{ isBlur: boolean }>`
   transition: filter 0.4s ease-in-out;
   overflow: hidden;
 `;
-const ImageWrapper = styled.div` width: 100%; display: flex; justify-content: center;`;
+const ImageWrapper = styled.div`display: flex; justify-content: center;`;
 const ResultImage = styled.img`
-  width: 100%;
+  flex: 1;
+  max-width: 100%;
   height: auto;
   
   animation: ${float} 3s ease-in-out infinite;
